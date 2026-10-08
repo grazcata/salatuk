@@ -1,0 +1,349 @@
+:root {
+  --bg: #f5f0eb;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --text-sec: #6b7280;
+  --accent: #1b7a4a;
+  --accent-light: #d4edda;
+  --gold: #c8a45c;
+  --border: #e5e7eb;
+  --shadow: rgba(0,0,0,0.06);
+  --nav-bg: #ffffff;
+  --next-bg: linear-gradient(135deg, #1b7a4a 0%, #2d9a5e 100%);
+  --next-text: #ffffff;
+  --sunrise-opacity: 0.5;
+}
+
+[data-theme="dark"] {
+  --bg: #0f1419;
+  --card: #1a2332;
+  --text: #e8e6e3;
+  --text-sec: #8b949e;
+  --accent: #3fb68b;
+  --accent-light: #1a3a2a;
+  --gold: #d4a843;
+  --border: #2d3748;
+  --shadow: rgba(0,0,0,0.3);
+  --nav-bg: #1a2332;
+  --next-bg: linear-gradient(135deg, #1b5e3a 0%, #2d8a5e 100%);
+  --next-text: #ffffff;
+  --sunrise-opacity: 0.4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Header ─── */
+.header {
+  padding: 20px 20px 12px;
+  text-align: center;
+}
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+  font-family: 'Georgia', serif;
+}
+#city-name {
+  font-size: 0.95rem;
+  color: var(--text-sec);
+}
+#date-display {
+  font-size: 0.82rem;
+  color: var(--text-sec);
+  margin-top: 2px;
+}
+#location-status {
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-top: 4px;
+}
+
+/* ─── Countdown Card ─── */
+.countdown-card {
+  margin: 12px 20px;
+  padding: 20px;
+  background: var(--next-bg);
+  border-radius: 16px;
+  text-align: center;
+  color: var(--next-text);
+  box-shadow: 0 4px 20px rgba(27,122,74,0.3);
+}
+.countdown-card .label {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-bottom: 2px;
+}
+#next-prayer-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+#countdown {
+  font-size: 2.4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+}
+
+/* ─── Prayer List ─── */
+#prayer-list {
+  padding: 0 20px;
+}
+.prayer-row {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  margin: 6px 0;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px var(--shadow);
+  transition: all 0.3s ease;
+}
+.prayer-row.next {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  font-weight: 600;
+}
+.prayer-row.sunrise {
+  opacity: var(--sunrise-opacity);
+}
+.prayer-icon {
+  font-size: 1.3rem;
+  margin-right: 12px;
+  width: 30px;
+  text-align: center;
+}
+.prayer-name {
+  flex: 1;
+  font-size: 1.05rem;
+}
+.prayer-time {
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+/* ─── Qibla Page ─── */
+.compass-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+.compass-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 20px 0;
+}
+#compass-rose {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+#compass-rose::before {
+  content: 'N';
+  position: absolute;
+  top: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+#compass-rose::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--text-sec);
+  border-radius: 50%;
+}
+#qibla-needle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 50%;
+  transform-origin: bottom center;
+  margin-left: -2px;
+  transition: transform 0.3s ease;
+}
+#qibla-needle::before {
+  content: '🕋';
+  position: absolute;
+  top: 8px;
+  left: -12px;
+  font-size: 1.6rem;
+}
+#qibla-degree {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 16px;
+}
+.qibla-label {
+  color: var(--text-sec);
+  font-size: 0.9rem;
+}
+#compass-permission {
+  display: none;
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* ─── Settings Page ─── */
+.settings-section {
+  padding: 16px 20px;
+}
+.settings-section h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-sec);
+  margin-bottom: 10px;
+}
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--card);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px var(--shadow);
+}
+.setting-row label {
+  font-size: 0.95rem;
+}
+.setting-row select, .setting-row input[type="range"] {
+  accent-color: var(--accent);
+}
+select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+input[type="range"] {
+  width: 100px;
+}
+.adj-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--card);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 3px var(--shadow);
+}
+.adj-row label { flex: 1; font-size: 0.9rem; }
+.adj-val { font-size: 0.8rem; color: var(--text-sec); min-width: 50px; text-align: right; }
+
+/* Toggle switch */
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 26px;
+}
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle .slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--border);
+  border-radius: 26px;
+  transition: 0.3s;
+}
+.toggle .slider::before {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.toggle input:checked + .slider {
+  background: var(--accent);
+}
+.toggle input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+/* ─── Bottom Navigation ─── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  background: var(--nav-bg);
+  border-top: 1px solid var(--border);
+  padding: 8px 0;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  z-index: 100;
+}
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px;
+  background: none;
+  border: none;
+  color: var(--text-sec);
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-btn .icon { font-size: 1.4rem; }
+.nav-btn.active { color: var(--accent); }
+
+/* ─── Pages ─── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ─── Responsive & PWA ─── */
+@media (display-mode: standalone) {
+  body { padding-top: env(safe-area-inset-top); }
+}
+@media (min-width: 481px) {
+  body { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+}

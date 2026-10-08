@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1b7a4a"/>
+      <stop offset="100%" style="stop-color:#2d9a5e"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="256" fill="url(#g)"/>
+  <!-- Mosque dome -->
+  <path d="M256 100 C200 100 160 160 160 200 L160 340 L352 340 L352 200 C352 160 312 100 256 100Z" fill="none" stroke="white" stroke-width="8" stroke-linejoin="round"/>
+  <!-- Minaret left -->
+  <rect x="128" y="200" width="24" height="140" rx="4" fill="none" stroke="white" stroke-width="6"/>
+  <rect x="132" y="180" width="16" height="20" rx="8" fill="none" stroke="white" stroke-width="4"/>
+  <!-- Minaret right -->
+  <rect x="360" y="200" width="24" height="140" rx="4" fill="none" stroke="white" stroke-width="6"/>
+  <rect x="364" y="180" width="16" height="20" rx="8" fill="none" stroke="white" stroke-width="4"/>
+  <!-- Crescent -->
+  <circle cx="256" cy="140" r="25" fill="white" opacity="0.9"/>
+  <circle cx="266" cy="135" r="20" fill="url(#g)"/>
+  <!-- Star -->
+  <polygon points="280,128 283,136 292,136 285,141 288,149 280,144 272,149 275,141 268,136 277,136" fill="white" opacity="0.9"/>
+  <!-- Door -->
+  <path d="M240 340 L240 290 C240 275 272 275 272 290 L272 340" fill="none" stroke="white" stroke-width="5"/>
+  <!-- Base line -->
+  <line x1="120" y1="340" x2="392" y2="340" stroke="white" stroke-width="6" stroke-linecap="round"/>
+</svg>

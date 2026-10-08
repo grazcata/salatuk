@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1b7a4a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Horaires de prière, boussole Qibla et notifications - Application de prière pour usage personnel">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <title>صلاتك - Salatuk</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════ Page: Horaires ═══════ -->
+  <div id="page-prayers" class="page active">
+    <div class="header">
+      <h1>صلاتك</h1>
+      <div id="city-name">Chargement...</div>
+      <div id="date-display"></div>
+      <div id="location-status"></div>
+    </div>
+
+    <div class="countdown-card">
+      <div class="label">Prochaine prière</div>
+      <div id="next-prayer-name">⏳</div>
+      <div id="countdown">--:--:--</div>
+    </div>
+
+    <div id="prayer-list"></div>
+  </div>
+
+  <!-- ═══════ Page: Qibla ═══════ -->
+  <div id="page-qibla" class="page">
+    <div class="header">
+      <h1>🕋 Qibla</h1>
+    </div>
+    <div class="compass-container">
+      <div class="qibla-label">Direction de la Qibla</div>
+      <div id="qibla-degree">--°</div>
+      <div class="compass-wrapper">
+        <div id="compass-rose"></div>
+        <div id="qibla-needle"></div>
+      </div>
+      <button id="compass-permission">Activer la boussole</button>
+      <p style="font-size:0.8rem; color:var(--text-sec); text-align:center; margin-top:12px; padding: 0 20px;">
+        Tenez votre téléphone à plat. La Kaaba 🕋 indique la direction de la prière.
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════ Page: Réglages ═══════ -->
+  <div id="page-settings" class="page">
+    <div class="header">
+      <h1>⚙️ Réglages</h1>
+    </div>
+
+    <div class="settings-section">
+      <h3>Apparence</h3>
+      <div class="setting-row">
+        <label>Mode sombre</label>
+        <label class="toggle">
+          <input type="checkbox" id="theme-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Méthode de calcul</h3>
+      <div class="setting-row">
+        <label>Convention</label>
+        <select id="calc-method">
+          <option value="morocco">Habous (Maroc)</option>
+          <option value="mwl">Ligue Mondiale</option>
+          <option value="isna">ISNA</option>
+          <option value="egypt">Égypte</option>
+          <option value="makkah">Umm al-Qura</option>
+          <option value="karachi">Karachi</option>
+          <option value="tehran">Téhéran</option>
+          <option value="jafari">Jafari</option>
+          <option value="turkey">Diyanet (Turquie)</option>
+          <option value="france">UOIF (France)</option>
+          <option value="singapore">MUIS (Singapour)</option>
+          <option value="gulf">Golfe</option>
+        </select>
+      </div>
+      <div class="setting-row">
+        <label>Asr (école)</label>
+        <select id="asr-method">
+          <option value="1">Shafi'i / Maliki / Hanbali</option>
+          <option value="2">Hanafi</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Ajustements manuels (minutes)</h3>
+      <div class="adj-row">
+        <label>🌙 Fajr</label>
+        <input type="range" id="adj-sobh" min="-15" max="15" value="0">
+        <span class="adj-val" id="adj-sobh-val">0 min</span>
+      </div>
+      <div class="adj-row">
+        <label>🌅 Lever</label>
+        <input type="range" id="adj-shorook" min="-15" max="15" value="0">
+        <span class="adj-val" id="adj-shorook-val">0 min</span>
+      </div>
+      <div class="adj-row">
+        <label>☀️ Dhuhr</label>
+        <input type="range" id="adj-dohr" min="-15" max="15" value="0">
+        <span class="adj-val" id="adj-dohr-val">0 min</span>
+      </div>
+      <div class="adj-row">
+        <label>🌤️ Asr</label>
+        <input type="range" id="adj-asr" min="-15" max="15" value="0">
+        <span class="adj-val" id="adj-asr-val">0 min</span>
+      </div>
+      <div class="adj-row">
+        <label>🌇 Maghrib</label>
+        <input type="range" id="adj-maghreb" min="-15" max="15" value="0">
+        <span class="adj-val" id="adj-maghreb-val">0 min</span>
+      </div>
+      <div class="adj-row">
+        <label>🌃 Isha</label>
+        <input type="range" id="adj-ichaa" min="-15" max="15" value="0">
+        <span class="adj-val" id="adj-ichaa-val">0 min</span>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Notifications</h3>
+      <div class="setting-row">
+        <label>Rappels de prière</label>
+        <label class="toggle">
+          <input type="checkbox" id="notif-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="settings-section" style="text-align:center; color:var(--text-sec); font-size:0.8rem; padding-top:20px;">
+      <p>Salatuk PWA — Usage personnel</p>
+      <p>Calculs astronomiques locaux • Aucun serveur requis</p>
+      <p style="margin-top:4px;">Analysé avec <a href="https://github.com/morluto/rea" style="color:var(--accent)">REA</a></p>
+    </div>
+  </div>
+
+  <!-- ═══════ Bottom Navigation ═══════ -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-page="prayers">
+      <span class="icon">🕌</span>
+      Horaires
+    </button>
+    <button class="nav-btn" data-page="qibla">
+      <span class="icon">🧭</span>
+      Qibla
+    </button>
+    <button class="nav-btn" data-page="settings">
+      <span class="icon">⚙️</span>
+      Réglages
+    </button>
+  </nav>
+
+  <script src="js/prayer-times.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Service Worker registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
